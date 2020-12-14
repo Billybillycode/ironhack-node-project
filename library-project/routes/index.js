@@ -54,7 +54,8 @@ router.get("/cocktail-add", async (req, res, next) => {
 router.post("/cocktail-add", async (req, res, next) => {
   try {
     const newCocktail = await CocktailModel.create(req.body);
-    res.render("../views/bar/create_cocktail.hbs", newCocktail);
+    // res.render("../views/bar/create_cocktail.hbs", newCocktail);
+    res.redirect("bar/all_cocktails");
   } catch (error) {
     next(error);
   }

@@ -10,24 +10,39 @@
         <input id="name" type="text" name="name">
     </div>
 
-    <div>
+    {{!-- <div class="alcohol-level-announcement">
+        <label for="alcohol-level">alcohol level</label>
+        <input id="alcohol-level" type="text" name="alcoholLevel">
+    </div> --}}
+
+    {{!-- <div>
         <div class="alcohol-level-announcement">Choose your alcohol level</div>
 
         <div class="alcohol-choice">
             <label for="alcohol-level">little smile</label>
-            <input id="alcohol-level" type="checkbox" name="alcoholLevel">
+            <input id="alcohol-level" type="radio" name="alcoholLevel">
         </div>
 
         <div class="alcohol-choice">
             <label for="alcohol-level">reach the star</label>
-            <input id="alcohol-level" type="checkbox" name="alcoholLevel">
+            <input id="alcohol-level" type="radio" name="alcoholLevel">
         </div>
 
         <div class="alcohol-choice">
             <label for="alcohol-level">A night you won't remember</label>
-            <input id="alcohol-level" type="checkbox" name="alcoholLevel">
+            <input id="alcohol-level" type="radio" name="alcoholLevel">
         </div>
-    </div>
+    </div> --}}
+
+    {{!-- <div>
+        <label for="alcohol-level">Choose your alcohol level</label>
+        <input list="alcohol-level" id="alcohol-level" name="alcoholLevel">
+        <datalist>
+            <option value="little smile">little smile</option>
+            <option value="reach the star">reach the star</option>
+            <option value="A night you won't remember">A night you won't remember</option>
+        </datalist>
+    </div> --}}
     <div>
         <label for="ingredients">ingredients</label>
         <input id="ingredients" type="text" name="ingredients">
