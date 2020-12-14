@@ -16,7 +16,7 @@ router.get("/", (req, res, next) => {
 router.get("/bar", async (req, res, next) => {
   try {
     const allCocktails = await CocktailModel.find();
-    res.render("../views/bar/all_cocktails.hbs", { allCocktails });
+    res.render("bar/all_cocktails", { allCocktails });
   } catch (error) {
     next(error);
   }
@@ -37,6 +37,7 @@ router.get("/bar/:category", async (req, res, next) => {
 // DISPLAY ONE PRODUCT
 router.get("/one-cocktail/:id", async (req, res, next) => {
   try {
+    console.log(req.params);
     const oneCocktail = await CocktailModel.findById(req.params.id);
     res.render("../views/bar/one_cocktail.hbs", { oneCocktail });
   } catch (error) {
@@ -45,17 +46,15 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
 });
 
 //ROUTE TO ACCESS THE FORM TO ADD/CREATE NEW COCKTAILS
-// router.get("/cocktail-add", async (req, res, next) => {
-//     res.render("cocktails_add");
-//   }
-
-// });
+router.get("/cocktail-add", async (req, res, next) => {
+  res.render("../views/bar/create_cocktail.hbs");
+});
 
 // ROUTE TO ACTUALLY CREATE A PRODUCT
-router.post("/product-add", async (req, res, next) => {
+router.post("/cocktail-add", async (req, res, next) => {
   try {
     const newCocktail = await CocktailModel.create(req.body);
-    res.render("../views/bar/create_cocktail.hbs", { newCocktail });
+    res.render("../views/bar/create_cocktail.hbs", newCocktail);
   } catch (error) {
     next(error);
   }
@@ -69,8 +68,8 @@ router.post("/product-add", async (req, res, next) => {
 //DELETE PRODUCT
 router.get("/delete/:id", async (req, res, next) => {
   try {
-    await CocktailModel.findByIdAndDelete(req.params.id);
-    res.redirect("../views/bar/all_cocktails.hbs");
+    const cocktailDelete = await CocktailModel.findByIdAndDelete(req.params.id);
+    res.redirect("../views/bar/all_cocktails.hbs", cocktailDelete);
   } catch (error) {
     next(error);
   }
@@ -80,6 +79,16 @@ router.get("/delete/:id", async (req, res, next) => {
 // ACCESS THE UPDATE PAGE
 router.get("/cocktail-edit/:id", async (req, res, next) => {
   try {
+    const cocktailEdit = await CocktailModel.findById(req.params.id);
+    res.render("../views/bar/update_cocktail.hbs", cocktailEdit);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// SEND THE ACTUAL UPDATED PRODUCT
+router.post("/cocktail-edit/:id", async (req, res, next) => {
+  try {
     const cocktailEdit = await CocktailModel.findByIdAndUpdate(
       req.params.id,
       req.body,
@@ -87,18 +96,15 @@ router.get("/cocktail-edit/:id", async (req, res, next) => {
         new: true,
       }
     );
-    res.render("../views/bar/update_cocktail.hbs", { cocktailEdit });
+    res.redirect("../views/bar/all_cocktails.hbs", { cocktailEdit });
   } catch (error) {
     next(error);
   }
 });
 
-// SEND THE ACTUAL UPDATED PRODUCT
-router.post("/cocktail-edit/:id", async (req, res, next) => {});
-
 // ABOUT US PAGE
 router.get("/about", async (req, res, next) => {
-  res.render("about_us");
+  res.render("../views/about.hbs");
 });
 
 module.exports = router;

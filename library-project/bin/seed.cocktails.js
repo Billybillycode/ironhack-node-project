@@ -1,6 +1,6 @@
 require("dotenv").config();
 require("../config/mongo");
-const CocktailModel = require("../models/Cocktail");
+const CocktailModel = require("../models/Cocktails");
 const mongoose = require("mongoose");
 
 const cocktails = [
