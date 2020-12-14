@@ -28,7 +28,7 @@ router.get("/bar/:category", async (req, res, next) => {
     const cocktails = await CocktailModel.find({
       alcoholLevel: req.params.cat,
     });
-    res.render("../views/bar/one_cocktail.hbs", { cocktails });
+    res.render("bar/all_cocktails", { cocktails });
   } catch (error) {
     next(error);
   }
@@ -61,9 +61,10 @@ router.post("/cocktail-add", async (req, res, next) => {
 });
 
 //NEW ROUTE TO MANAGE PRODUCTS
-// router.get("/manage", async (req, res) => {
-//   res.render("products_manage");
-// });
+router.get("/manage", async (req, res) => {
+  const cocktails = await CocktailModel.find();
+  res.render("../views/bar/bar_manage.hbs", { cocktails });
+});
 
 //DELETE PRODUCT
 router.get("/delete/:id", async (req, res, next) => {
