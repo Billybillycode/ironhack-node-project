@@ -1,1 +1,13 @@
-<h2>cocktails</h2>
+<h2>All Cocktails</h2>
+
+<section class="cocktails-display">
+    <div class="info-cocktail">
+        {{#each allCocktails}}
+        <div> <img src="{{this.image}}" alt="cocktail-pic"> </div>
+        <h3 class="cocktail-name"> {{this.name}} </h3>
+        <div> {{this.funFact}} </div>
+        <a href="/one-cocktail/{{this._id}}">See details</a>
+        {{/each}}
+    </div>
+
+</section>
