@@ -50,14 +50,6 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
   }
 });
 
-
-
-
-
-
-
-
-
 //ROUTE TO ACCESS THE FORM TO ADD/CREATE NEW COCKTAILS
 router.get("/cocktail-add", async (req, res, next) => {
   res.render("../views/bar/create_cocktail.hbs");
@@ -66,39 +58,18 @@ router.get("/cocktail-add", async (req, res, next) => {
 // ROUTE TO ACTUALLY CREATE A PRODUCT
 //Image condition
 router.post("/cocktail-add", upload.single("image"), async (req, res, next) => {
-  const newCocktail = {...req.body};
-if (!req.file) newCocktail.image = undefined;
-else newCocktail.image = req.file.path;
-console.log(newCocktail);
-//début du create
-try {
-  await CocktailModel.create(newCocktail);
-  res.redirect("/bar");
-} catch (err) {
-  next(err);
-}
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const newCocktail = { ...req.body };
+  if (!req.file) newCocktail.image = undefined;
+  else newCocktail.image = req.file.path;
+  console.log(newCocktail);
+  //début du create
+  try {
+    await CocktailModel.create(newCocktail);
+    res.redirect("/bar");
+  } catch (err) {
+    next(err);
+  }
+});
 
 // router.post("/cocktail-add", async (req, res, next) => {
 //   try {
@@ -120,24 +91,30 @@ router.get("/manage", async (req, res) => {
 // ACCESS THE UPDATE PAGE
 router.get("/cocktail-edit/:id", async (req, res, next) => {
   try {
-    await CocktailModel.findById(req.params.id);
-    res.render("../views/bar/update_cocktail.hbs");
+    const cocktailUpdate = await CocktailModel.findById(req.params.id);
+    console.log(cocktailUpdate);
+    res.render("../views/bar/update_cocktail.hbs", cocktailUpdate);
   } catch (error) {
     next(error);
   }
 });
 
 // SEND THE ACTUAL UPDATED PRODUCT
-router.post("/cocktail-edit/:id", async (req, res, next) => {
-  try {
-    await CocktailModel.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.redirect("/bar");
-  } catch (error) {
-    next(error);
+router.post(
+  "/cocktail-edit/:id",
+  upload.single("image"),
+  async (req, res, next) => {
+    try {
+      console.log("toto");
+      const cocktailToUpdate = { ...req.body };
+      if (req.file) cocktailToUpdate.image = req.file.path;
+      await CocktailModel.findByIdAndUpdate(req.params.id, cocktailToUpdate);
+      res.redirect("/bar");
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 //DELETE PRODUCT
 router.post("/delete/:id", async (req, res, next) => {
