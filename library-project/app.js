@@ -40,7 +40,7 @@ const index = require("./routes/index");
 app.use("/", index);
 //app.use('/api/', indexRouter);
 
-// const authentification = require("./routes/authentification");
-// app.use("/", authentification);
+const authentification = require("./routes/authentification");
+app.use("/", authentification);
 
 module.exports = app;

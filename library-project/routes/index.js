@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-// const cloudinary = require("../config/cloudinary");
 const upload = require("../config/cloudinary");
 const CocktailModel = require("../models/Cocktails");
 // const Users = require("../models/User");

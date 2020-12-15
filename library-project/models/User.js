@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  userName: {
-    Type: String,
-    required: true,
-  },
+  userName: String,
 
   email: {
     Type: String,
-    required: true,
+    unique: true,
   },
 
-  password: {
-    Type: String,
-    required: true,
+  password: String,
+  role: { type: String, enum: ["admin", "user"], default: "user" },
+
+  profilPic: {
+    type: String,
+    default: "../public/images/PinClipart.com_drunk-clipart_5532215.png",
   },
 
   country: String,

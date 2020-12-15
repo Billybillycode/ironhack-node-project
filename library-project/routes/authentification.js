@@ -1,60 +1,97 @@
-// // Showing home page 
-// app.get("/", function (req, res) { 
-//   res.render("home"); 
-// }); 
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcrypt");
 
+const User = require("../models/User");
 
-// app.get("/secret", isLoggedIn, function (req, res) { 
-//   res.render("secret"); 
-// }); 
+// ACCESS THE SIGN IN FORM
+router.get("/signin", async (req, res, next) => {
+  res.render("auth/signin");
+});
 
-// // Showing register form 
-// app.get("/register", function (req, res) { 
-//   res.render("register"); 
-// }); 
+router.post("/signin", async (req, res, next) => {
+  const { email, password } = req.body;
+  const foundUser = await User.findOne({ email });
 
-// // Handling user signup 
-// app.post("/register", function (req, res) { 
-//   var username = req.body.username 
-//   var password = req.body.password 
-//   User.register(new User({ username: username }), 
-//           password, function (err, user) { 
-//       if (err) { 
-//           console.log(err); 
-//           return res.render("register"); 
-//       } 
+  if (!foundUser) {
+    req.flash("error", "invalid password or email");
+    res.redirect("/signin");
+  } else {
+    const isSamePassword = bcrypt.compareSync(password, foundUser.password);
+    if (!isSamePassword) {
+      req.flash("error", "invalid password or email");
+      res.redirect("/signin");
+    } else {
+      const userDocument = { ...foundUser };
+    }
+  }
+});
 
-//       passport.authenticate("local")( 
-//           req, res, function () { 
-//           res.render("secret"); 
-//       }); 
-//   }); 
-// }); 
+// ROUTE/BOUTON SIGN OUT à mettre dans e form SIGN OUT pour que le user puisse se sign out
+router.get("/signout", async (req, res, next) => {
+  req.session.destroy(function (err) {
+    // cannot access session here
+    // console.log(req.session.currentUser);
+    res.redirect("/auth/signin");
+  });
+});
 
-// //Showing login form 
-// app.get("/login", function (req, res) { 
-//   res.render("login"); 
-// }); 
+// // Showing home page
+// app.get("/", function (req, res) {
+//   res.render("home");
+// });
 
-// //Handling user login 
-// app.post("/login", passport.authenticate("local", { 
-//   successRedirect: "/secret", 
+// app.get("/secret", isLoggedIn, function (req, res) {
+//   res.render("secret");
+// });
+
+// // Showing register form
+// app.get("/register", function (req, res) {
+//   res.render("register");
+// });
+
+// // Handling user signup
+// app.post("/register", function (req, res) {
+//   var username = req.body.username
+//   var password = req.body.password
+//   User.register(new User({ username: username }),
+//           password, function (err, user) {
+//       if (err) {
+//           console.log(err);
+//           return res.render("register");
+//       }
+
+//       passport.authenticate("local")(
+//           req, res, function () {
+//           res.render("secret");
+//       });
+//   });
+// });
+
+// //Showing login form
+// app.get("/login", function (req, res) {
+//   res.render("login");
+// });
+
+// //Handling user login
+// app.post("/login", passport.authenticate("local", {
+//   successRedirect: "/secret",
 //   failureRedirect: "/login"
-// }), function (req, res) { 
-// }); 
+// }), function (req, res) {
+// });
 
-// //Handling user logout  
-// app.get("/logout", function (req, res) { 
-//   req.logout(); 
-//   res.redirect("/"); 
-// }); 
+// //Handling user logout
+// app.get("/logout", function (req, res) {
+//   req.logout();
+//   res.redirect("/");
+// });
 
-// function isLoggedIn(req, res, next) { 
-//   if (req.isAuthenticated()) return next(); 
-//   res.redirect("/login"); 
-// } 
+// function isLoggedIn(req, res, next) {
+//   if (req.isAuthenticated()) return next();
+//   res.redirect("/login");
+// }
 
-// var port = process.env.PORT || 3000; 
-// app.listen(port, function () { 
-//   console.log("Server Has Started!"); 
-// }); 
+// var port = process.env.PORT || 3000;
+// app.listen(port, function () {
+//   console.log("Server Has Started!");
+// });
