@@ -164,5 +164,5 @@ router.post("/upload", upload.single("file"), function (req, res, next) {
   }
   res.json({ fileUrl: "http://192.168.0.7:3000/images/" + req.file.filename });
 });
-console.log('test')
+console.log("test");
 module.exports = router;
