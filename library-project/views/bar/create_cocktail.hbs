@@ -1,5 +1,9 @@
 <h1>Create a Cocktail</h1>
-<form action="/cocktail-add" method="POST">
+{{!-- <form action="/cocktail-add" method="POST"> --}}
+    
+    <form action="/profile" method="post" enctype="multipart/form-data">
+  <input type="file" name="avatar" />
+
     <div>
         <label for="name">Name of your Cocktail</label>
         <input id="name" type="text" name="name">
@@ -25,7 +29,10 @@
         <input id="cocktail-img" type="file" name="image">
     </div>
     <button type="submit">Add a new cocktail</button>
-</form> 
+
+</form>
+
+{{!-- </form>  --}}
 
 
 
