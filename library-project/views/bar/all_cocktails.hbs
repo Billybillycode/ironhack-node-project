@@ -7,6 +7,12 @@
         <h3 class="cocktail-name"> {{this.name}} </h3>
         <div> {{this.funFact}} </div>
         <a href="/one-cocktail/{{this._id}}">See details</a>
+        <form action="/cocktail-edit/{{this._id}}" method="get">
+            <button>Update</button>
+        </form>
+        <form action="/delete/{{this._id}}" method="post">
+            <button>Delete</button>
+        </form>
         {{/each}}
     </div>
 

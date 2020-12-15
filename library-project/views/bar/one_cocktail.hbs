@@ -5,3 +5,7 @@
 <div>{{oneCocktail.alcoholLevel}}</div>
 <div> {{oneCocktail.ingredients}} </div>
 <div> {{oneCocktail.funFact}} </div>
+
+<form action="/cocktail-edit/{{oneCocktail._id}}" method="get">
+    <button>Update</button>
+</form>

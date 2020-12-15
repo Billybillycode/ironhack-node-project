@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 // const cloudinary = require("../config/cloudinary");
-
+const upload = require("../config/cloudinary");
 const CocktailModel = require("../models/Cocktails");
 // const Users = require("../models/User");
 
@@ -58,7 +58,7 @@ router.get("/cocktail-add", async (req, res, next) => {
 // ROUTE TO ACTUALLY CREATE A PRODUCT
 router.post("/cocktail-add", async (req, res, next) => {
   try {
-    const newCocktail = await CocktailModel.create(req.body);
+    await CocktailModel.create(req.body); //requête du client, le corps de la requête
     // res.render("../views/bar/create_cocktail.hbs", newCocktail);
     res.redirect("bar/all_cocktails");
   } catch (error) {
@@ -72,22 +72,12 @@ router.get("/manage", async (req, res) => {
   res.render("../views/bar/bar_manage.hbs", { cocktails });
 });
 
-//DELETE PRODUCT
-router.get("/delete/:id", async (req, res, next) => {
-  try {
-    const cocktailDelete = await CocktailModel.findByIdAndDelete(req.params.id);
-    res.redirect("../views/bar/all_cocktails.hbs", cocktailDelete);
-  } catch (error) {
-    next(error);
-  }
-});
-
 //UPDATE A PRODUCT
 // ACCESS THE UPDATE PAGE
 router.get("/cocktail-edit/:id", async (req, res, next) => {
   try {
-    const cocktailEdit = await CocktailModel.findById(req.params.id);
-    res.render("../views/bar/update_cocktail.hbs", cocktailEdit);
+    await CocktailModel.findById(req.params.id);
+    res.render("../views/bar/update_cocktail.hbs");
   } catch (error) {
     next(error);
   }
@@ -96,14 +86,20 @@ router.get("/cocktail-edit/:id", async (req, res, next) => {
 // SEND THE ACTUAL UPDATED PRODUCT
 router.post("/cocktail-edit/:id", async (req, res, next) => {
   try {
-    const cocktailEdit = await CocktailModel.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-      }
-    );
-    res.redirect("../views/bar/all_cocktails.hbs", { cocktailEdit });
+    await CocktailModel.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.redirect("/bar");
+  } catch (error) {
+    next(error);
+  }
+});
+
+//DELETE PRODUCT
+router.post("/delete/:id", async (req, res, next) => {
+  try {
+    await CocktailModel.findByIdAndDelete(req.params.id);
+    res.redirect("/bar");
   } catch (error) {
     next(error);
   }
@@ -115,58 +111,58 @@ router.get("/about", async (req, res, next) => {
 });
 
 // Img
-var multer  = require('multer');
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, './public/images');
-    },
-    filename: (req, file, cb) => {
-      console.log(file);
-      var filetype = '';
-      if(file.mimetype === 'image/gif') {
-        filetype = 'gif';
-      }
-      if(file.mimetype === 'image/png') {
-        filetype = 'png';
-      }
-      if(file.mimetype === 'image/jpeg') {
-        filetype = 'jpg';
-      }
-      cb(null, 'image-' + Date.now() + '.' + filetype);
-    }
-});
-var upload = multer({storage: storage});
+// var multer = require("multer");
+// var storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "./public/images");
+//   },
+//   filename: (req, file, cb) => {
+//     console.log(file);
+//     var filetype = "";
+//     if (file.mimetype === "image/gif") {
+//       filetype = "gif";
+//     }
+//     if (file.mimetype === "image/png") {
+//       filetype = "png";
+//     }
+//     if (file.mimetype === "image/jpeg") {
+//       filetype = "jpg";
+//     }
+//     cb(null, "image-" + Date.now() + "." + filetype);
+//   },
+// });
+// var upload = multer({ storage: storage });
 
-//new route for upload
-var multer  = require('multer');
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, '../images');
-    },
-    filename: (req, file, cb) => {
-      console.log(file);
-      var filetype = '';
-      if(file.mimetype === 'image/gif') {
-        filetype = 'gif';
-      }
-      if(file.mimetype === 'image/png') {
-        filetype = 'png';
-      }
-      if(file.mimetype === 'image/jpeg') {
-        filetype = 'jpg';
-      }
-      cb(null, 'image-' + Date.now() + '.' + filetype);
-    }
-});
-var upload = multer({storage: storage});
+// //new route for upload
+// var multer = require("multer");
+// var storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "../images");
+//   },
+//   filename: (req, file, cb) => {
+//     console.log(file);
+//     var filetype = "";
+//     if (file.mimetype === "image/gif") {
+//       filetype = "gif";
+//     }
+//     if (file.mimetype === "image/png") {
+//       filetype = "png";
+//     }
+//     if (file.mimetype === "image/jpeg") {
+//       filetype = "jpg";
+//     }
+//     cb(null, "image-" + Date.now() + "." + filetype);
+//   },
+// });
+// var upload = multer({ storage: storage });
 
-router.post('/upload',upload.single('file'),function(req, res, next) {
+router.post("/upload", upload.single("file"), function (req, res, next) {
   console.log(req.file);
-  if(!req.file) {
+  if (!req.file) {
     res.status(500);
     return next(err);
   }
-  res.json({ fileUrl: 'http://192.168.0.7:3000/images/' + req.file.filename });
-})
+  res.json({ fileUrl: "http://192.168.0.7:3000/images/" + req.file.filename });
+});
 
 module.exports = router;

@@ -9,8 +9,8 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 
-var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var multer = require("multer");
+var upload = multer({ dest: "uploads/" });
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
@@ -43,7 +43,4 @@ app.use("/", index);
 // const authentification = require("./routes/authentification");
 // app.use("/", authentification);
 
-
-
 module.exports = app;
-
