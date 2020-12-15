@@ -1,15 +1,23 @@
-<h1>login</h1> 
+<div class="container">
+  <div class="wrapper-login">
+    <h1>Login</h1>
+    <hr>
+    <form class="form-container" action="index.html" method="post">
+      <input type="text" id="email-login" class="input-textbox" name="name" value="" placeholder="Email">
+      <input type="text" id="password-login" class="input-textbox" name="name" value="" placeholder="Password">
+      <input type="button" class="input-button" name="name" value="Login">
+    </form>
+    <p>Not registered? <a id="New-account">Create an account</a></p>
+  </div>
 
-<form action="/login" method="POST"> 
-	<input type="text" name="username"
-		placeholder="username"> 
-	<input type="password" name="password"
-		placeholder="password"> 
-	<button>login</button> 
-</form> 
-
-<h1>This is home page</h1> 
-
-<li><a href="/register">Sign up!!</a></li> 
-<li><a href="/login">Login</a></li> 
-<li><a href="/logout">Logout</a></li> 
+  <div class="wrapper-signIn">
+    <h1>Sign Up</h1>
+    <hr>
+    <form class="form-container" action="index.html" method="post">
+      <input type="text" id="email-signin" class="input-signin-textbox" name="name" value="" placeholder="Email">
+      <input type="text" id="password-signin" class="input-signin-textbox" name="name" value="" placeholder="Password">
+      <input type="text" id="re-password-signin" class="input-signin-textbox" name="name" value="" placeholder="Repeat-Password">
+      <input type="button" class="input-signin-button" name="name" value="Sign Up">
+    </form>
+  </div>
+</div>

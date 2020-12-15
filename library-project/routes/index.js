@@ -12,6 +12,11 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+// LOG IN / SIGNUP
+router.get("/login", (req, res, next) => {
+  res.render("login");
+});
+
 // PAGE MY WONDERFUL BAR
 router.get("/bar", async (req, res, next) => {
   try {
