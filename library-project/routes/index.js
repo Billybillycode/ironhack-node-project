@@ -50,21 +50,65 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
   }
 });
 
+
+
+
+
+
+
+
+
 //ROUTE TO ACCESS THE FORM TO ADD/CREATE NEW COCKTAILS
 router.get("/cocktail-add", async (req, res, next) => {
   res.render("../views/bar/create_cocktail.hbs");
 });
 
 // ROUTE TO ACTUALLY CREATE A PRODUCT
-router.post("/cocktail-add", async (req, res, next) => {
-  try {
-    await CocktailModel.create(req.body); //requête du client, le corps de la requête
-    // res.render("../views/bar/create_cocktail.hbs", newCocktail);
-    res.redirect("bar/all_cocktails");
-  } catch (error) {
-    next(error);
-  }
-});
+//Image condition
+router.post("/cocktail-add", upload.single("image"), async (req, res, next) => {
+  const newCocktail = {...req.body};
+if (!req.file) newCocktail.image = undefined;
+else newCocktail.image = req.file.path;
+console.log(newCocktail);
+//début du create
+try {
+  await CocktailModel.create(newCocktail);
+  res.redirect("/bar");
+} catch (err) {
+  next(err);
+}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// router.post("/cocktail-add", async (req, res, next) => {
+//   try {
+//     await CocktailModel.create(req.body); //requête du client, le corps de la requête
+//     // res.render("../views/bar/create_cocktail.hbs", newCocktail);
+//     res.redirect("bar");
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 //NEW ROUTE TO MANAGE PRODUCTS
 router.get("/manage", async (req, res) => {
