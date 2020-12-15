@@ -1,56 +1,50 @@
-<h1>Create a cococktail</h1>
-
+<h1>Create a Cocktail</h1>
 <form action="/cocktail-add" method="POST">
+    <div>
+        <label for="name">Name of your Cocktail</label>
+        <input id="name" type="text" name="name">
+    </div>
+    <div>
+        <label>Choose your alcohol level</label>
+        <input list="level">
+        <datalist id="level">
+            <option value="Little smile" />
+            <option value="Reach the star" />
+            <option value="A night you won't remember" />
+        </datalist> 
+    </div>
+    <label for="ingredients">Ingredients</label>
+    <input id="ingredients" type="text" name="ingredients">
+    </div>
+    <div>
+        <label for="fun-fact">Funny story about your cocktail</label>
+        <input id="fun-fact" type="text" name="funFact">
+    </div>
     <div>
         <label for="cocktail-img">Image</label>
         <input id="cocktail-img" type="file" name="image">
     </div>
-    <div>
-        <label for="name">name</label>
-        <input id="name" type="text" name="name">
-    </div>
+    <button type="submit">Add a new cocktail</button>
+</form> 
 
-    {{!-- <div class="alcohol-level-announcement">
-        <label for="alcohol-level">alcohol level</label>
-        <input id="alcohol-level" type="text" name="alcoholLevel">
-    </div> --}}
 
-    {{!-- <div>
-        <div class="alcohol-level-announcement">Choose your alcohol level</div>
 
+{{!-- <div class="alcohol-level-announcement">
+    <label for="alcohol-level">alcohol level</label>
+    <input id="alcohol-level" type="text" name="alcoholLevel">
+</div> --}}
+
+
+{{!-- <div class="alcohol-level-announcement">Choose your alcohol level</div>
         <div class="alcohol-choice">
-            <label for="alcohol-level">little smile</label>
+            <label for="alcohol-level">Little smile</label>
+            <input id="alcohol-level" type="list" name="alcoholLevel">
+        </div>
+        <div class="alcohol-choice">
+            <label for="alcohol-level">Reach the star</label>
             <input id="alcohol-level" type="radio" name="alcoholLevel">
         </div>
-
-        <div class="alcohol-choice">
-            <label for="alcohol-level">reach the star</label>
-            <input id="alcohol-level" type="radio" name="alcoholLevel">
-        </div>
-
         <div class="alcohol-choice">
             <label for="alcohol-level">A night you won't remember</label>
             <input id="alcohol-level" type="radio" name="alcoholLevel">
-        </div>
-    </div> --}}
-
-    {{!-- <div>
-        <label for="alcohol-level">Choose your alcohol level</label>
-        <input list="alcohol-level" id="alcohol-level" name="alcoholLevel">
-        <datalist>
-            <option value="little smile">little smile</option>
-            <option value="reach the star">reach the star</option>
-            <option value="A night you won't remember">A night you won't remember</option>
-        </datalist>
-    </div> --}}
-    <div>
-        <label for="ingredients">ingredients</label>
-        <input id="ingredients" type="text" name="ingredients">
-    </div>
-    <div>
-        <label for="fun-fact">funny story about your cocktail</label>
-        <input id="fun-fact" type="text" name="funFact">
-    </div>
-
-    <button type="submit">Add a new cocktail</button>
-</form>
+        </div> --}}

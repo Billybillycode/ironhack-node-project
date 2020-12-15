@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const cocktailSchema = new Schema({
   image: {
     type: String,
-    required: true,
+    default: "https://www.atelier-cocktail.com/uploads/cocktail-banner/900X471/20180531143840.png",
   },
   name: {
-    type: String,
-    required: true,
+    type: String
+    // required: true,
   },
 
   // alcoholBase: {
@@ -20,17 +20,17 @@ const cocktailSchema = new Schema({
   alcoholLevel: {
     type: String,
     enum: ["little smile", "reach the star", "A night you won't remember"],
-    required: true,
+    // required: true,
   },
 
   ingredients: {
-    type: [String],
-    required: true,
+    type: [String]
+    // required: true,
   },
 
   funFact: {
-    type: String,
-    required: true,
+    type: String
+    // required: true,
   },
 });
 
