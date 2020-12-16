@@ -1,17 +1,18 @@
-<h1>form sign in</h1>
+{{!-- <h1>{{error_msg}}</h1> --}}
 
 <form method="post" action="/auth/signin" class="form">
     <h1 class="title">Signin</h1>
+    <hr>
 
     <label for="email"></label>
-    <input class="input" name="email" type="text" value="admin@artistify.com">
+    <input class="input" id="email-login" name="email" type="text" value="" placeholder="Email">
     <label for="password"></label>
-    <input class="input" name="password" type="password" value="12345">
+    <input class="input" id="password-login" name="password" type="password" value="" placeholder="Password">
 
     <button class="btn">go !</button>
     <hr>
 
     <p>
-        No account yet ? <a class="link" href="/auth/signup">please signup !</a>
+        No account yet ? <a class="link" href="/auth/signup">join us!</a>
     </p>
 </form>
