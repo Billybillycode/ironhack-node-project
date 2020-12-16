@@ -13,23 +13,27 @@ router.get("/signin", async (req, res, next) => {
 router.post("/signin", async (req, res, next) => {
   const { email, password } = req.body;
   const foundUser = await UserModel.findOne({ email });
+  console.log(foundUser);
 
   if (!foundUser) {
+    console.log("toto1");
     req.flash("error", "invalid password or email");
-    res.redirect("/signin");
+    res.redirect("/auth/signin");
   } else {
     const isSamePassword = bcrypt.compareSync(password, foundUser.password);
     if (!isSamePassword) {
+      console.log("toto2");
       req.flash("error", "invalid password or email");
-      res.redirect("/signin");
+      res.redirect("/auth/signin");
     } else {
+      console.log("toto3");
       const userDocument = { ...foundUser };
       const userObject = foundUser.toObject();
       delete userObject.password;
       req.session.currentUser = userObject;
 
       req.flash("success", "Successfully logged in...");
-      res.redirect("/dashboard");
+      res.redirect("/manage");
     }
   }
 });
@@ -54,7 +58,7 @@ router.post("/signup", async (req, res, next) => {
       newUser.password = hashPassword;
       await UserModel.create(newUser);
       req.flash("success", "Yeah! Welcome to the Bar! Have fun!");
-      res.redirect("/my_bar");
+      res.redirect("/manage");
     }
   } catch (error) {
     next(error);
