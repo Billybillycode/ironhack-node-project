@@ -48,6 +48,21 @@ const cocktails = [
   },
 ];
 
+const tags = [
+  { alcoholBase: "vodka" },
+  { alcoholBase: "whisky" },
+  { alcoholBase: "gin" },
+  { alcoholBase: "rhum" },
+  { alcoholBase: "tequila" },
+  { alcoholBasel: "cognac" },
+  { alcoholBase: "cachaça" },
+  { alcoholBase: "bourbon" },
+  { alcoholBase: "armagniac" },
+  { alcoholBase: "calvados" },
+  { alcoholBasel: "absinthe" },
+  { alcoholBasel: "virgin" },
+];
+
 //empty database
 CocktailModel.deleteMany()
   .then(async () => {

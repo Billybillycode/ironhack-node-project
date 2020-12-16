@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const tagSchema = new Schema(
   {
-  label: String,
+  alcoholBase: String,
 
 },
 { timestamps: true}
