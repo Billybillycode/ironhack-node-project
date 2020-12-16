@@ -13,16 +13,13 @@ const cocktailSchema = new Schema({
     // required: true,
   },
 
-   alcoholBase: {
-     type: String,
-     enum: ["Vodka", "Gin", "Rum", "Tequilla", "Scotch"],
-   },
+  id_tags: [{ type: Schema.Types.ObjectId, ref: "alcoholBase" }],
 
  // alcoholLevel: {
   //type: String,
    // enum: ["little smile", "reach the star", "A night you won't remember"],
     // required: true,
-  //},
+  
 
   ingredients: {
     type: [String],

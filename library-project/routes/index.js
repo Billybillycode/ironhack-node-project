@@ -1,8 +1,9 @@
 const express = require("express");
+const app = require("../app");
 const router = express.Router();
 const upload = require("../config/cloudinary");
 const CocktailModel = require("../models/Cocktails");
-// const Users = require("../models/User");
+ const Users = require("../models/User");
 
 // console.log(CocktailModel);
 
@@ -12,9 +13,9 @@ router.get("/", (req, res, next) => {
 });
 
 // LOG IN / SIGNUP
-router.get("/login", (req, res, next) => {
-  res.render("login");
-});
+// router.get("/login", (req, res, next) => {
+//   res.render("login");
+// });
 
 // PAGE MY WONDERFUL BAR
 router.get("/bar", async (req, res, next) => {
@@ -35,6 +36,18 @@ router.get("/bar/:category", async (req, res, next) => {
     res.render("bar/all_cocktails", { cocktails });
   } catch (error) {
     next(error);
+  }
+});
+
+router.get("/tags", async (req, res) => {
+  res.render("../views/layout.hbs")
+});
+
+router.post("/tags", async (req, res) => {
+  try {
+    await TagModel.create(req.body);
+  } catch (error) {
+    res.json(error);
   }
 });
 
