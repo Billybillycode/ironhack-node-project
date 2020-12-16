@@ -8,7 +8,8 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
-
+const flash = require("connect-flash");
+const session = require("express-session");
 var multer = require("multer");
 var upload = multer({ dest: "uploads/" });
 
@@ -32,15 +33,20 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "views")));
+app.use(session({ secret: "Ola quetal", cookie: { maxAge: 60000 } }));
+app.use(flash());
 
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
 
+app.use(require("./middlewares/flashMessage"));
+
 const index = require("./routes/index");
 app.use("/", index);
+
 //app.use('/api/', indexRouter);
 
-// const authentification = require("./routes/authentification");
-// app.use("/", authentification);
+const authentification = require("./routes/authentification");
+app.use("/auth", authentification);
 
 module.exports = app;

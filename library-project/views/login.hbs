@@ -1,11 +1,13 @@
 <div class="container">
   <div class="wrapper-login">
+    <h1>{{error_msg}}</h1>
     <h1>Login</h1>
     <hr>
-    <form class="form-container" action="index.html" method="post">
-      <input type="text" id="email-login" class="input-textbox" name="name" value="" placeholder="Email">
-      <input type="text" id="password-login" class="input-textbox" name="name" value="" placeholder="Password">
-      <input type="button" class="input-button" name="name" value="Login">
+    <form class="form-container" action="/auth/signin" method="post">
+      <input type="text" id="email-login" class="input-textbox" name="email" value="" placeholder="Email">
+      <input type="text" id="password-login" class="input-textbox" name="password" value="" placeholder="Password">
+
+      <button>Login</button>
     </form>
     <p>Not registered? <a id="New-account">Create an account</a></p>
   </div>
@@ -16,7 +18,8 @@
     <form class="form-container" action="index.html" method="post">
       <input type="text" id="email-signin" class="input-signin-textbox" name="name" value="" placeholder="Email">
       <input type="text" id="password-signin" class="input-signin-textbox" name="name" value="" placeholder="Password">
-      <input type="text" id="re-password-signin" class="input-signin-textbox" name="name" value="" placeholder="Repeat-Password">
+      <input type="text" id="re-password-signin" class="input-signin-textbox" name="name" value=""
+        placeholder="Repeat-Password">
       <input type="button" class="input-signin-button" name="name" value="Sign Up">
     </form>
   </div>
