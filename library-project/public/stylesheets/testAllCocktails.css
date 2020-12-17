@@ -2,6 +2,8 @@
 
 
 .cocktails-display{
+    display: flex;
+    flex-direction: column;
     font-family: Arial, Sans-serif;
     font-size: 25px;
     margin: 0;
@@ -9,6 +11,9 @@
 
        
 }
+/* .cocktail-container{
+    display: flex;
+} */
 .fx-image-gal {
     display: flex;
     flex-direction: column;
@@ -18,20 +23,20 @@
     max-width: 960px;
     justify-content: center;
   }
-  .fx-gal-item {
+  /* .fx-gal-item {
     width: 100%;
     margin: 0px;
     padding: 0px;
     overflow: hidden;
   }
-  
-  .fx-gal-item a {
+   */
+  /* .fx-gal-item a {
     padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
     background-color: white;
-  }
+  } */
   
   .fx-gal-image-thumb img {
     width: 100%;
