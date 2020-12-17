@@ -1,66 +1,38 @@
-<h1>Create a Cocktail</h1>
-{{!-- <form action="/cocktail-add" method="POST"> --}}
-
-    <form action="/cocktail-add" method="POST" enctype="multipart/form-data">
+<div class="container">
 
 
-        <div>
-            <label for="name">Name of your Cocktail</label>
-            <input id="name" type="text" name="name">
-        </div>
-         <div class="flexed-item">
-    <select name="main-category" id="main_category" class="select sneak-select">
-      <option value="">Choose Alcohol Base</option>
-      <option value="">vodka</option>
-      <option value="">Whisky</option>
-      <option value="">Gin</option>
-      <option value="">Rhum</option>
-      <option value="">Tequila</option>
-      <option value="">Cognac</option>
-      <option value="">Cachaça</option>
-      <option value="">Bourbon</option>
-      <option value="">Armagnac</option>
-      <option value="">Calvados</option>
-      <option value="">Absinthe</option>
-      <option value="">Virgin</option>
-      <option value="">Other</option>
-    </select>
+    {{!-- <form action="/cocktail-add" method="POST"> --}}
 
-  </div>
-       {{!-- <div>
-            <label>Choose your alcohol Type</label>
-            <input list="level">
-            <datalist id="level">
-                <option value="Whisky" />
-                <option value="Gin" />
-                <option value="Rhum" />
-                <option value="Tequila" />
-                <option value="Cognac" />
-                <option value="Cachaça" />
-                <option value="Bourbon" />
-                <option value="Armagnac" />
-                <option value="Calvados" />
-                <option value="Absinthe" />
-                <option value="Virgin" />
-                <option value="Other" />
-            </datalist>
-         </div> --}}
-        <label for="ingredients">Ingredients</label>
-        <input id="ingredients" type="text" name="ingredients">
-        </div>
-        <div>
-            <label for="fun-fact">Funny story about your cocktail</label>
-            <input id="fun-fact" type="text" name="funFact">
-        </div>
-        <div>
-            <label for="cocktail-img">Image</label>
-            <input id="cocktail-img" type="file" name="image">
-        </div>
-        <button type="submit">Add a new cocktail</button>
+        <form action="/cocktail-add" method="POST" id="contact" enctype="multipart/form-data">
+            <h1>Create a Cocktail</h1>
 
-    </form>
+            <div>
+                <label for="name">Name of your Cocktail</label>
+                <input id="name" type="text" name="name">
+            </div>
 
-    {{!--
+            <div>
+                <label for="ingredients">Ingredients</label>
+                <input id="ingredients" type="text" name="ingredients">
+            </div>
+
+            <div>
+                <label for="fun-fact">Funny story about your cocktail</label>
+                <input id="fun-fact" type="text" name="funFact">
+            </div>
+
+            <div>
+                <label for="cocktail-img">Image</label>
+                <input id="cocktail-img" type="file" name="image">
+            </div>
+
+            <button class="btn-submit" type="submit">Add a new cocktail</button>
+
+        </form>
+
+</div>
+
+{{!--
 </form> --}}
 
 
@@ -88,3 +60,40 @@
 
 
 {{!-- <input type="file" name="avatar" /> --}}
+
+{{!-- <div>
+    <label>Choose your alcohol Type</label>
+    <input list="level">
+    <datalist id="level">
+        <option value="Whisky" />
+        <option value="Gin" />
+        <option value="Rhum" />
+        <option value="Tequila" />
+        <option value="Cognac" />
+        <option value="Cachaça" />
+        <option value="Bourbon" />
+        <option value="Armagnac" />
+        <option value="Calvados" />
+        <option value="Absinthe" />
+        <option value="Virgin" />
+        <option value="Other" />
+    </datalist>
+</div> --}}
+
+{{!-- <div class="flexed-item">
+    <select name="main-category" id="main_category" class="select sneak-select">
+        <option value="">Choose Alcohol Base</option>
+        <option value="">vodka</option>
+        <option value="">Whisky</option>
+        <option value="">Gin</option>
+        <option value="">Rhum</option>
+        <option value="">Tequila</option>
+        <option value="">Cognac</option>
+        <option value="">Cachaça</option>
+        <option value="">Bourbon</option>
+        <option value="">Armagnac</option>
+        <option value="">Calvados</option>
+        <option value="">Absinthe</option>
+        <option value="">Virgin</option>
+        <option value="">Other</option>
+    </select> --}}

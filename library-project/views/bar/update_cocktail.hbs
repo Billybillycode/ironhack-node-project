@@ -1,52 +1,28 @@
-<h2>Update cocktail</h2>
+<div class="container-update">
 
-<form action="/cocktail-edit/{{_id}}" method="POST" enctype="multipart/form-data">
-    <div>
-        <label for="name">name</label>
-        <input id="name" type="text" name="name" value="{{name}}">
-    </div>
-    {{!-- <div class="form-item-wrapper flexed-item">
-        <label for="category" class="label-main-cat label">Main category</label>
-        <select id="category" name="category" class="select" required>
-            <option value="-1" disabled selected>Choose a category</option>
-            <option value="vodka">vodka</option>
-            <option value="whisky">Whisky</option>
-            <option value="gin">Gin</option>
-            <option value="rhum">Rhum</option>
-            <option value="tequila">Tequila</option>
-            <option value="cognac">Cognac</option>
-            <option value="cachaça">Cachaça</option>
-            <option value="bourbon">Bourbon</option>
-            <option value="armagnac">Armagnac</option>
-            <option value="calvados">Calvados</option>
-            <option value="absinthe">Absinthe</option>
-            <option value="virgin">Virgin</option>
-            <option value="other">Other</option>
-        </select>
-        </select>
-    </div> --}}
-    {{!-- <div>
-        <label>Choose your alcohol level</label>
-        <input list="level">
-        <datalist id="level">
-            <option value="Little smile" />
-            <option value="Reach the star" />
-            <option value="A night you won't remember" />
-        </datalist>
-    </div> --}}
-    <div>
-        <label for="ingredients">ingredients</label>
-        <input id="ingredients" type="text" name="ingredients" value="{{ingredients}}">
-    </div>
-    <div>
-        <label for="fun-fact">fun fact</label>
-        <input id="fun-fact" type="text" name="funFact" value="{{funFact}}">
-    </div>
+    <form action="/cocktail-edit/{{_id}}" method="POST" enctype="multipart/form-data">
+        <h2>Update cocktail</h2>
 
-    <div>
-        <label for="cocktail-img">Image</label>
-        <input id="cocktail-img" type="file" name="image" value="{{image}}">
-    </div>
+        <div>
+            <label for="name">name</label>
+            <input id="name" type="text" name="name" value="{{name}}">
+        </div>
 
-    <button type="submit">Update your cocktail</button>
-</form>
+        <div>
+            <label for="ingredients">ingredients</label>
+            <input id="ingredients" type="text" name="ingredients" value="{{ingredients}}">
+        </div>
+        <div>
+            <label for="fun-fact">fun fact</label>
+            <input id="fun-fact" type="text" name="funFact" value="{{funFact}}">
+        </div>
+
+        <div>
+            <label for="cocktail-img">Image</label>
+            <input id="cocktail-img" type="file" name="image" value="{{image}}">
+        </div>
+
+        <button class="btn-submit" type="submit">Update your cocktail</button>
+    </form>
+
+</div>

@@ -104,10 +104,10 @@ router.post("/cocktail-add", upload.single("image"), async (req, res, next) => {
 // });
 
 //NEW ROUTE TO MANAGE PRODUCTS
-router.get("/manage", async (req, res) => {
-  const cocktails = await CocktailModel.find();
-  res.render("../views/bar/bar_manage.hbs", { cocktails, css: "addCocktail" });
-});
+// router.get("/manage", async (req, res) => {
+//   const cocktails = await CocktailModel.find();
+//   res.render("../views/bar/bar_manage.hbs", { cocktails, css: "addCocktail" });
+// });
 
 //UPDATE A PRODUCT
 // ACCESS THE UPDATE PAGE

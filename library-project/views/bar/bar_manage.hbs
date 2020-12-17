@@ -1,14 +1,29 @@
-{{!-- <section id="cocktail"> --}}
-    <h1>My bar</h1>
-    <div> <img src="{{oneUser.profilPic}}" alt="user-pic"> </div>
-    <div>{{oneUser.userName}}</div>
-    {{!-- <div>{{oneUser.country}}</div> --}}
+<h1>My bar</h1>
+<div> <img src="{{oneUser.profilPic}}" alt="user-pic"> </div>
+<div>{{oneUser.userName}}</div>
 
 
-    <form action="/user-edit/{{oneUser._id}}" method="get">
+
+<form action="/auth/user-edit" method="get">
+    <button>Update</button>
+</form>
+
+<form action="/auth/" method="post">
+    <button>Delete</button>
+</form>
+
+
+{{!-- {{#each allCocktails}}
+<div>
+    <img src="{{this.image}}" alt="cocktail-pic">
+    <h3>{{this.name}}</h3>
+    <p>{{this.funFact}} </p>
+    <a href="/one-cocktail/{{this._id}}">See details</a>
+    <form action="/cocktail-edit/{{this._id}}" method="get">
         <button>Update</button>
     </form>
-
-    <form action="/delete/{{oneUser._id}}" method="post">
+    <form action="/delete/{{this._id}}" method="post">
         <button>Delete</button>
     </form>
+</div>
+{{/each}} --}}

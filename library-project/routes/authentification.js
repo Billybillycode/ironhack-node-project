@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../config/cloudinary");
 const UserModel = require("../models/User");
+const CocktailModel = require("../models/Cocktails");
 
 const bcrypt = require("bcrypt");
 
@@ -34,7 +35,7 @@ router.post("/signin", async (req, res, next) => {
       req.session.currentUser = userObject;
 
       req.flash("success", "Successfully logged in...");
-      res.redirect("/manage");
+      res.redirect("/auth/manage");
     }
   }
 });
@@ -59,7 +60,7 @@ router.post("/signup", async (req, res, next) => {
       newUser.password = hashPassword;
       await UserModel.create(newUser);
       req.flash("success", "Yeah! Welcome to the Bar! Have fun!");
-      res.redirect("/manage");
+      res.redirect("/auth/manage");
     }
   } catch (error) {
     next(error);
@@ -67,7 +68,7 @@ router.post("/signup", async (req, res, next) => {
 });
 
 //NEW ROUTE TO MANAGE PRODUCTS
-router.get("/mybar", async (req, res) => {
+router.get("/manage", async (req, res) => {
   const cocktails = await CocktailModel.find();
   res.render("../views/bar/bar_manage.hbs", { cocktails });
 });
@@ -96,9 +97,9 @@ router.get("/manage", async (req, res, next) => {
 
 // UPDATE USER
 
-router.get("/user-edit/:id", async (req, res, next) => {
+router.get("/user-edit/", async (req, res, next) => {
   try {
-    const userUpdate = await UserModel.findById(req.params.id);
+    const userUpdate = await UserModel.findById(req.session.currentUser._id);
     res.render("../views/bar/user_update.hbs", userUpdate);
   } catch (error) {
     next(error);
@@ -107,25 +108,24 @@ router.get("/user-edit/:id", async (req, res, next) => {
 
 // ROUTE TO ACTUALLY UPDATE USER
 
-router.post(
-  "/user-edit/:id",
-  upload.single("image"),
-  async (req, res, next) => {
-    try {
-      const userToUpdate = { ...req.body };
-      if (req.file) userToUpdate.image = req.file.path;
-      await UserModel.findByIdAndUpdate(req.params.id, userToUpdate);
-      res.redirect("/mybar");
-    } catch (error) {
-      next(error);
-    }
+router.post("/user-edit", upload.single("image"), async (req, res, next) => {
+  try {
+    const userToUpdate = { ...req.body };
+    if (req.file) userToUpdate.image = req.file.path;
+    await UserModel.findByIdAndUpdate(
+      req.session.currentUser._id,
+      userToUpdate
+    );
+    res.redirect("/auth/manage");
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // DELETE USER
-router.post("/user-delete/:id", async (req, res, next) => {
+router.post("/user-delete", async (req, res, next) => {
   try {
-    await UserModel.findByIdAndDelete(req.params.id);
+    await UserModel.findByIdAndDelete(req.session.currentUser._id);
     res.redirect("/bar");
   } catch (error) {
     next(error);
