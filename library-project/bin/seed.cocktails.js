@@ -14,6 +14,7 @@ const cocktails = [
       "Soda Water",
     ],
     funFact: "I was drunk during my wedding after a 2 drinks",
+    category: "rhum",
   },
 
   {
@@ -30,6 +31,7 @@ const cocktails = [
       "Dash Soy Sauce",
     ],
     funFact: "You don't need to eat like an oger after that",
+    category: "gin",
   },
 
   {
@@ -45,6 +47,7 @@ const cocktails = [
       "1/2 oz Light Cream",
     ],
     funFact: "just read the title amigos and enjoy!",
+    category: "vodka",
   },
 ];
 

@@ -12,6 +12,11 @@ const cocktailSchema = new Schema({
     type: String,
     // required: true,
   },
+  category: {
+    type: String,
+    enum: ["whisky", "rhum", "gin","vodka","tequila","cognac","cachaça","calvados","bourbon","armagnac","absinthe","virgin","other"],
+   
+  },
 
   id_tags: [{ type: Schema.Types.ObjectId, ref: "alcoholBase" }],
 

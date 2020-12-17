@@ -31,7 +31,7 @@ router.get("/bar", async (req, res, next) => {
 router.get("/bar/:category", async (req, res, next) => {
   try {
     const cocktails = await CocktailModel.find({
-      alcoholLevel: req.params.cat,
+      alcoholBase: req.params.cat,
     });
     res.render("bar/all_cocktails", { cocktails });
   } catch (error) {
@@ -40,7 +40,7 @@ router.get("/bar/:category", async (req, res, next) => {
 });
 
 router.get("/tags", async (req, res) => {
-  res.render("../views/layout.hbs")
+  res.render("../views/layout.hbs");
 });
 
 router.post("/tags", async (req, res) => {
