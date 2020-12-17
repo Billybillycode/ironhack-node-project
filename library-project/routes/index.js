@@ -62,7 +62,7 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
   }
 });
 
-//ROUTE TO ACCESS THE FORM TO ADD/CREATE NEW COCKTAILS
+//ROUTE TO ACCESS THE FORM TO ADD/CREATE NEW COCKTAIL
 router.get("/cocktail-add", async (req, res, next) => {
   res.render("../views/bar/create_cocktail.hbs");
 });
