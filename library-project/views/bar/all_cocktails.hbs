@@ -3,7 +3,13 @@
 <section class="cocktails-display">
     <div class="info-cocktail">
         {{#each allCocktails}}
-        <div> <img src="{{this.image}}" alt="cocktail-pic"> </div>
+        {{!-- <div> <img src="{{this.image}}" alt="cocktail-pic"> </div> --}}
+        <div class="fx-image-gal">
+            <div class="fx-gal-item">
+                <div class="fx-gal-image-thumb" tabindex="1"> <img src="{{this.image}}" alt="cocktail-pic"> </div> 
+            </div>
+        </div>
+        
         <h3 class="cocktail-name"> {{this.name}} </h3>
         <div> {{this.funFact}} </div>
         <a href="/one-cocktail/{{this._id}}">See details</a>
@@ -22,7 +28,7 @@
     {{/each}}
 
 </section>
-  <div>
+  {{!-- <div>
      <label>Choose your alcohol level</label>
      <input list=“level”>
        <option value="">Choose Alcohol Base</option>
@@ -38,4 +44,4 @@
       <option value="absinthe"/>
       <option value="virgin" /> 
       <option value="other" />
-  </div>
+  </div> --}}
