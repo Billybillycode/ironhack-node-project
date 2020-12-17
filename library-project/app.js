@@ -10,10 +10,10 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 const flash = require("connect-flash");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
 var multer = require("multer");
 var upload = multer({ dest: "uploads/" });
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(

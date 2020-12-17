@@ -71,12 +71,6 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-//NEW ROUTE TO MANAGE PRODUCTS
-router.get("/manage", async (req, res) => {
-  const cocktails = await CocktailModel.find();
-  res.render("../views/bar/bar_manage.hbs", { cocktails });
-});
-
 // ROUTE/BOUTON SIGN OUT à mettre dans e form SIGN OUT pour que le user puisse se sign out
 router.get("/signout", async (req, res, next) => {
   req.session.destroy(function (err) {
@@ -135,5 +129,11 @@ router.post("/user-delete", async (req, res, next) => {
     next(error);
   }
 });
+
+//NEW ROUTE TO MANAGE PRODUCTS
+// router.get("/manage", async (req, res) => {
+//   const cocktails = await CocktailModel.find();
+//   res.render("../views/bar/bar_manage.hbs", { cocktails });
+// });
 
 module.exports = router;

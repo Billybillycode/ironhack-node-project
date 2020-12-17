@@ -113,10 +113,10 @@ router.post("/cocktail-add", upload.single("image"), async (req, res, next) => {
 // ACCESS THE UPDATE PAGE
 router.get("/cocktail-edit/:id", async (req, res, next) => {
   try {
-    const cocktailUpdate = await CocktailModel.findById(req.params.id);
-    console.log(cocktailUpdate);
+    const cocktailToUpdate = await CocktailModel.findById(req.params.id);
+    console.log(cocktailToUpdate);
     res.render("../views/bar/update_cocktail.hbs", {
-      cocktailUpdate,
+      cocktailToUpdate,
       css: "update",
     });
   } catch (error) {
@@ -125,24 +125,6 @@ router.get("/cocktail-edit/:id", async (req, res, next) => {
 });
 
 // // SEND THE ACTUAL UPDATED PRODUCT
-// router.post(
-//   "/cocktail-edit/:id",
-//   upload.single("image"),
-//   async (req, res, next) => {
-//     try {
-//       console.log("toto");
-//       const cocktailToUpdate = { ...req.body };
-//       if (req.file) cocktailToUpdate.image = req.file.path;
-//       await CocktailModel.findByIdAndUpdate(req.params.id, {
-//         cocktailToUpdate,
-//       });
-//       res.redirect("/bar");
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
-// );
-
 router.post(
   "/cocktail-edit/:id",
   upload.single("image"),
@@ -158,6 +140,26 @@ router.post(
     }
   }
 );
+
+// router.post(
+//   "/cocktail-edit/:id",
+//   upload.single("image"),
+//   async (req, res, next) => {
+//     console.log("toto");
+//     const cocktailToUpdate = { ...req.body };
+//     if (req.file) {
+//       cocktailToUpdate.image = req.file.path;
+//     } else {
+//       cocktailToUpdate.image = undefined;
+//     }
+//     try {
+//       await CocktailModel.findByIdAndUpdate(req.params.id, cocktailToUpdate);
+//       res.redirect("/bar");
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
 
 //DELETE PRODUCT
 router.post("/delete/:id", async (req, res, next) => {
