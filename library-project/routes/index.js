@@ -9,7 +9,9 @@ const Users = require("../models/User");
 
 // HOME PAGE
 router.get("/", (req, res, next) => {
-  res.render("index");
+  res.render("index", {
+    css: "accueilPage",
+  });
 });
 
 // LOG IN / SIGNUP
@@ -21,7 +23,10 @@ router.get("/", (req, res, next) => {
 router.get("/bar", async (req, res, next) => {
   try {
     const allCocktails = await CocktailModel.find();
-    res.render("bar/all_cocktails", { allCocktails });
+    res.render("bar/all_cocktails", {
+      allCocktails,
+      css: "testAllCocktails",
+    });
   } catch (error) {
     next(error);
   }
@@ -56,7 +61,10 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
   try {
     console.log(req.params);
     const oneCocktail = await CocktailModel.findById(req.params.id);
-    res.render("../views/bar/one_cocktail.hbs", { oneCocktailz });
+    res.render("bar/one_cocktail.hbs", {
+      oneCocktail,
+      css: "oneCocktail",
+    });
   } catch (error) {
     next(error);
   }
@@ -64,7 +72,9 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
 
 //ROUTE TO ACCESS THE FORM TO ADD/CREATE NEW COCKTAIL
 router.get("/cocktail-add", async (req, res, next) => {
-  res.render("../views/bar/create_cocktail.hbs");
+  res.render("./bar/create_cocktail.hbs", {
+    css: "addCocktail",
+  });
 });
 
 // ROUTE TO ACTUALLY CREATE A PRODUCT
@@ -96,7 +106,7 @@ router.post("/cocktail-add", upload.single("image"), async (req, res, next) => {
 //NEW ROUTE TO MANAGE PRODUCTS
 router.get("/manage", async (req, res) => {
   const cocktails = await CocktailModel.find();
-  res.render("../views/bar/bar_manage.hbs", { cocktails });
+  res.render("../views/bar/bar_manage.hbs", { cocktails, css: "addCocktail" });
 });
 
 //UPDATE A PRODUCT
@@ -105,7 +115,10 @@ router.get("/cocktail-edit/:id", async (req, res, next) => {
   try {
     const cocktailUpdate = await CocktailModel.findById(req.params.id);
     console.log(cocktailUpdate);
-    res.render("../views/bar/update_cocktail.hbs", cocktailUpdate);
+    res.render("../views/bar/update_cocktail.hbs", {
+      cocktailUpdate,
+      css: "update",
+    });
   } catch (error) {
     next(error);
   }
