@@ -56,10 +56,7 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
   try {
     console.log(req.params);
     const oneCocktail = await CocktailModel.findById(req.params.id);
-    res.render("bar/one_cocktail.hbs", {
-      oneCocktail,
-      css: "oneCocktail",
-    });
+    res.render("../views/bar/one_cocktail.hbs", { oneCocktailz });
   } catch (error) {
     next(error);
   }
@@ -95,6 +92,12 @@ router.post("/cocktail-add", upload.single("image"), async (req, res, next) => {
 //     next(error);
 //   }
 // });
+
+//NEW ROUTE TO MANAGE PRODUCTS
+router.get("/manage", async (req, res) => {
+  const cocktails = await CocktailModel.find();
+  res.render("../views/bar/bar_manage.hbs", { cocktails });
+});
 
 //UPDATE A PRODUCT
 // ACCESS THE UPDATE PAGE
