@@ -10,19 +10,12 @@
   text-rendering: optimizeLegibility;
 }
 
-.container-update {
+#container-signup {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
   position: relative;
   padding-top: 5%;
-}
-
-h1 {
-  display: block;
-  font-size: 30px;
-  font-weight: 300;
-  margin-bottom: 15px;
 }
 
 input {
@@ -44,4 +37,20 @@ input {
   margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
+}
+
+h1 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.link-part {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.link {
+  color: black;
 }

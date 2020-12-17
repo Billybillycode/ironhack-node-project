@@ -1,18 +1,20 @@
 {{!-- <h1>{{error_msg}}</h1> --}}
+<div id="container-signin">
+    <form method="post" action="/auth/signin" class="form">
+        <h1 class="title">Signin</h1>
+        <hr>
 
-<form method="post" action="/auth/signin" class="form">
-    <h1 class="title">Signin</h1>
-    <hr>
+        <label for="email"></label>
+        <input class="input" id="email-login" name="email" type="text" value="" placeholder="Email">
+        <label for="password"></label>
+        <input class="input" id="password-login" name="password" type="password" value="" placeholder="Password">
 
-    <label for="email"></label>
-    <input class="input" id="email-login" name="email" type="text" value="" placeholder="Email">
-    <label for="password"></label>
-    <input class="input" id="password-login" name="password" type="password" value="" placeholder="Password">
+        <button class="btn-submit">go !</button>
+        <hr>
 
-    <button class="btn">go !</button>
-    <hr>
+        <p class="link-part">
+            No account yet ? <a class="link" href="/auth/signup"> join us!</a>
+        </p>
+    </form>
 
-    <p>
-        No account yet ? <a class="link" href="/auth/signup">join us!</a>
-    </p>
-</form>
+</div>

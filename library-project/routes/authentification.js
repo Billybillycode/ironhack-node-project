@@ -8,7 +8,9 @@ const bcrypt = require("bcrypt");
 
 // ACCESS THE SIGN IN FORM
 router.get("/signin", async (req, res, next) => {
-  res.render("auth/signin");
+  res.render("auth/signin", {
+    css: "signin",
+  });
 });
 
 // PROCESS DE SIGN IN
@@ -42,7 +44,9 @@ router.post("/signin", async (req, res, next) => {
 
 // ACCESS THE SIGN UP FORM
 router.get("/signup", async (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", {
+    css: "signup",
+  });
 });
 
 //PROCESS TO SIGNUP

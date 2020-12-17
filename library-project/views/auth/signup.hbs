@@ -1,23 +1,25 @@
-<h1>form sign up</h1>
+<div id="container-signup">
 
-<form method="post" action="/auth/signup" class="form">
-    <h1 class="title">Signup</h1>
-    <label for="username">name</label>
-    <input id="username-signup" class="input" name="userName" type="text" value="" placeholder="Email">
-    <label for="email">email</label>
-    <input id="email-signin" class="input" name="email" type="text" value="" placeholder="Email">
-    <label for="password">password</label>
-    <input id="password-signin" class="input" name="password" type="password" value="" placeholder="Password">
-    {{!-- <label for="password">repeat password</label>
-    <input type="password" id="re-password-signin" class="input-signin-textbox" name="password" value=""
-        placeholder="Repeat-Password"> --}}
+    <form method="post" action="/auth/signup" class="form">
+        <h1 class="title">Signup</h1>
+        <label for="username">name</label>
+        <input id="username-signup" class="input" name="userName" type="text" value="" placeholder="Email">
+        <label for="email">email</label>
+        <input id="email-signin" class="input" name="email" type="text" value="" placeholder="Email">
+        <label for="password">password</label>
+        <input id="password-signin" class="input" name="password" type="password" value="" placeholder="Password">
+        {{!-- <label for="password">repeat password</label>
+        <input type="password" id="re-password-signin" class="input-signin-textbox" name="password" value=""
+            placeholder="Repeat-Password"> --}}
 
-    <label for="avatar">avatar</label>
-    <input class="is-hidden" id="input-file" type="file" name="avatar">
+        <label for="avatar">avatar</label>
+        <input class="is-hidden" id="input-file" type="file" name="avatar">
 
-    <button class="btn">go !</button>
-    <hr>
-    <p>
-        Already have an account ? <a class="link" href="/auth/signin">please signin !</a>
-    </p>
-</form>
+        <button class="btn-submit">go !</button>
+        <hr>
+        <p>
+            Already have an account ? <a class="link" href="/auth/signin">please signin !</a>
+        </p>
+    </form>
+
+</div>

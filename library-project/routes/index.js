@@ -124,7 +124,25 @@ router.get("/cocktail-edit/:id", async (req, res, next) => {
   }
 });
 
-// SEND THE ACTUAL UPDATED PRODUCT
+// // SEND THE ACTUAL UPDATED PRODUCT
+// router.post(
+//   "/cocktail-edit/:id",
+//   upload.single("image"),
+//   async (req, res, next) => {
+//     try {
+//       console.log("toto");
+//       const cocktailToUpdate = { ...req.body };
+//       if (req.file) cocktailToUpdate.image = req.file.path;
+//       await CocktailModel.findByIdAndUpdate(req.params.id, {
+//         cocktailToUpdate,
+//       });
+//       res.redirect("/bar");
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
+
 router.post(
   "/cocktail-edit/:id",
   upload.single("image"),
@@ -202,13 +220,13 @@ router.get("/about", async (req, res, next) => {
 // });
 // var upload = multer({ storage: storage });
 
-router.post("/upload", upload.single("file"), function (req, res, next) {
-  console.log(req.file);
-  if (!req.file) {
-    res.status(500);
-    return next(err);
-  }
-  res.json({ fileUrl: "http://192.168.0.7:3000/images/" + req.file.filename });
-});
-console.log("test");
+// router.post("/upload", upload.single("file"), function (req, res, next) {
+//   console.log(req.file);
+//   if (!req.file) {
+//     res.status(500);
+//     return next(err);
+//   }
+//   res.json({ fileUrl: "http://192.168.0.7:3000/images/" + req.file.filename });
+// });
+// console.log("test");
 module.exports = router;
