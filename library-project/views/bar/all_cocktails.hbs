@@ -7,12 +7,12 @@
         <div id="info-cocktail">
         <h3 class="cocktail-name"> {{this.name}} </h3>
         <p>{{this.funFact}} </p>
-        <a href="/one-cocktail/{{this._id}}">See details</a>
-        <form action="/cocktail-edit/{{this._id}}" method="get">
-            <button>Update</button>
+        <a class="see-details" href="/one-cocktail/{{this._id}}">See details</a>
+        <form class="round" action="/cocktail-edit/{{this._id}}" method="get">
+            <button class="btc-form">Update</button>
         </form>
-        <form action="/delete/{{this._id}}" method="post">
-            <button>Delete</button>
+        <form class="round" action="/delete/{{this._id}}" method="post">
+            <button class="btc-form">Delete</button>
         </form>
     </div>
     </div>

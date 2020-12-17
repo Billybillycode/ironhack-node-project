@@ -19,6 +19,7 @@ h2 {
     flex-direction: row;
     flex-wrap: wrap;
     /* width: 300px; */
+    
 
 }
 
@@ -32,7 +33,51 @@ img {
     background-color: black;
     color: white;
     height: 100px;
+    text-align: center;
+}
+.see-details {
+    text-decoration: none;
 }
 
+/* btc-form */
+.round a {
+    color: crimson;
+}
 
+.round .btc-form {
+    display: inline-block;
+    width: 130px;
+    /* height: 40px;
+    line-height: 40px;
+    margin: 20px; */
+    position: relative;
+    overflow: hidden;
+    border: 2px solid crimson;
+    transition: color .5s;
+}
+
+.round .btc-form:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: crimson;
+    /* height: 150px;
+    width: 200px; */
+    border-radius: 50%;
+}
+
+.round .btc-form:hover {
+    color: #fff;
+}
+
+.round .btc-form:nth-child(1):before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+
+.round .btc-form:nth-child(1):hover:before {
+    top: -30px;
+    left: -30px;
+}
 
