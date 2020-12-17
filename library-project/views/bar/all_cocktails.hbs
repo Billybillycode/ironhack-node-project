@@ -1,28 +1,25 @@
-<h2>All Cocktails</h2>
-
-{{#each allCocktails}}
-
-<section class="cocktails-display">
-    <div class="info-cocktail">
-        {{!-- <div> <img src="{{this.image}}" alt="cocktail-pic"> </div> --}}
-        <div class="fx-gal-image-thumb" tabindex="1">
-            <img src="{{this.image}}" alt="cocktail-pic">
-        </div>
-        <div>
-            <h3 class="cocktail-name"> {{this.name}} </h3>
-            <p>{{this.funFact}} </p>
-            <a href="/one-cocktail/{{this._id}}">See details</a>
-            <form action="/cocktail-edit/{{this._id}}" method="get">
-                <button>Update</button>
-            </form>
-            <form action="/delete/{{this._id}}" method="post">
-                <button>Delete</button>
-            </form>
-        </div>
+<div><h2>All Cocktails</h2></div>
+ 
+<section id="container">
+    {{#each allCocktails}}
+    <div class="image-cocktail">
+        <img src="{{this.image}}" alt="cocktail-pic">
+        <div id="info-cocktail">
+        <h3 class="cocktail-name"> {{this.name}} </h3>
+        <p>{{this.funFact}} </p>
+        <a href="/one-cocktail/{{this._id}}">See details</a>
+        <form action="/cocktail-edit/{{this._id}}" method="get">
+            <button>Update</button>
+        </form>
+        <form action="/delete/{{this._id}}" method="post">
+            <button>Delete</button>
+        </form>
     </div>
-</section>
-{{/each}}
-{{!-- <div>
+    </div>
+    
+    </div>
+    {{/each}}
+</section>  {{!-- <div>
     <label>Choose your alcohol level</label>
     <input list=“level”>
     <option value="">Choose Alcohol Base</option>
