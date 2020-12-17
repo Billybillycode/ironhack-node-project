@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const upload = require("../config/cloudinary");
 const UserModel = require("../models/User");
 
 const bcrypt = require("bcrypt");
@@ -65,6 +66,12 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
+//NEW ROUTE TO MANAGE PRODUCTS
+router.get("/mybar", async (req, res) => {
+  const cocktails = await CocktailModel.find();
+  res.render("../views/bar/bar_manage.hbs", { cocktails });
+});
+
 // ROUTE/BOUTON SIGN OUT à mettre dans e form SIGN OUT pour que le user puisse se sign out
 router.get("/signout", async (req, res, next) => {
   req.session.destroy(function (err) {
@@ -74,13 +81,13 @@ router.get("/signout", async (req, res, next) => {
 });
 
 // DISPLAY ONE USER
-router.get("/mybar/:id", async (req, res, next) => {
+router.get("/manage", async (req, res, next) => {
+  console.log(req.session);
   try {
-    console.log(req.params);
-    const oneUser = await UserModel.findById(req.params.id);
+    const oneUser = await UserModel.findById(req.session.currentUser._id);
+    console.log(oneUser);
     res.render("../views/bar/bar_manage.hbs", {
       oneUser,
-      // css: "oneCocktail",
     });
   } catch (error) {
     next(error);
@@ -92,8 +99,34 @@ router.get("/mybar/:id", async (req, res, next) => {
 router.get("/user-edit/:id", async (req, res, next) => {
   try {
     const userUpdate = await UserModel.findById(req.params.id);
-    console.log(userUpdate);
     res.render("../views/bar/user_update.hbs", userUpdate);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// ROUTE TO ACTUALLY UPDATE USER
+
+router.post(
+  "/user-edit/:id",
+  upload.single("image"),
+  async (req, res, next) => {
+    try {
+      const userToUpdate = { ...req.body };
+      if (req.file) userToUpdate.image = req.file.path;
+      await UserModel.findByIdAndUpdate(req.params.id, userToUpdate);
+      res.redirect("/mybar");
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+// DELETE USER
+router.post("/user-delete/:id", async (req, res, next) => {
+  try {
+    await UserModel.findByIdAndDelete(req.params.id);
+    res.redirect("/bar");
   } catch (error) {
     next(error);
   }

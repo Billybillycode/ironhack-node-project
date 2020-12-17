@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const userSchema = new Schema(
-  {
+const userSchema = new Schema({
   userName: String,
 
   email: {
@@ -14,7 +13,7 @@ const userSchema = new Schema(
 
   profilPic: {
     type: String,
-    default: "../public/images/PinClipart.com_drunk-clipart_5532215.png",
+    default: "/images/PinClipart.com_drunk-clipart_5532215.png",
   },
 
   country: String,

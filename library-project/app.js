@@ -11,6 +11,7 @@ const logger = require("morgan");
 const path = require("path");
 const flash = require("connect-flash");
 const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 var multer = require("multer");
 var upload = multer({ dest: "uploads/" });
 
@@ -34,7 +35,20 @@ app.set("view engine", "hbs");
 app.use(express.static("public"));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 // app.use(express.static(path.join(__dirname, "views")));
-app.use(session({ secret: "Ola quetal", cookie: { maxAge: 60000 } }));
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 60000 }, // in millisec
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection, // you can store session infos in mongodb :)
+      ttl: 24 * 60 * 60,
+      // 1 day
+    }),
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 app.use(flash());
 
 // default value for title local

@@ -96,12 +96,6 @@ router.post("/cocktail-add", upload.single("image"), async (req, res, next) => {
 //   }
 // });
 
-//NEW ROUTE TO MANAGE PRODUCTS
-router.get("/manage", async (req, res) => {
-  const cocktails = await CocktailModel.find();
-  res.render("../views/bar/bar_manage.hbs", { cocktails });
-});
-
 //UPDATE A PRODUCT
 // ACCESS THE UPDATE PAGE
 router.get("/cocktail-edit/:id", async (req, res, next) => {
