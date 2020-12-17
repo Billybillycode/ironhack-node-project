@@ -7,6 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="../stylesheets/style.css" />
+  {{#if css}}
+  <link rel="stylesheet" href="../stylesheets/{{css}}.css">
+  {{/if}}
+
 </head>
 
 <body>
@@ -25,13 +29,13 @@
     </ul>
   </div>
   <div><select name="id_tags" id="tags" class="select">
-    <option value="-1" disabled selected>Choose a category</option>
-    {{#each tags}}
-    <option value="{{this._id}}">{{this.alcoholBase}}</option>
-    {{/each}}
-</select></div>
+      <option value="-1" disabled selected>Choose a category</option>
+      {{#each tags}}
+      <option value="{{this._id}}">{{this.alcoholBase}}</option>
+      {{/each}}
+    </select></div>
 
-  
+
 
   {{{body}}}
 

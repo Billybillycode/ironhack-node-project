@@ -73,4 +73,30 @@ router.get("/signout", async (req, res, next) => {
   });
 });
 
+// DISPLAY ONE USER
+router.get("/mybar/:id", async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const oneUser = await UserModel.findById(req.params.id);
+    res.render("../views/bar/bar_manage.hbs", {
+      oneUser,
+      // css: "oneCocktail",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// UPDATE USER
+
+router.get("/user-edit/:id", async (req, res, next) => {
+  try {
+    const userUpdate = await UserModel.findById(req.params.id);
+    console.log(userUpdate);
+    res.render("../views/bar/user_update.hbs", userUpdate);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

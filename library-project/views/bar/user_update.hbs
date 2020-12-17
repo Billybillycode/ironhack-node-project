@@ -1,0 +1,24 @@
+<h2>Update cocktail</h2>
+
+<form action="/cocktail-edit/{{_id}}" method="POST" enctype="multipart/form-data">
+    <div>
+        <label for="name">name</label>
+        <input id="name" type="text" name="name" value="{{name}}">
+    </div>
+
+    <div>
+        <label for="ingredients">ingredients</label>
+        <input id="ingredients" type="text" name="ingredients" value="{{ingredients}}">
+    </div>
+    <div>
+        <label for="fun-fact">fun fact</label>
+        <input id="fun-fact" type="text" name="funFact" value="{{funFact}}">
+    </div>
+
+    <div>
+        <label for="cocktail-img">Image</label>
+        <input id="cocktail-img" type="file" name="image" value="{{image}}">
+    </div>
+
+    <button type="submit">Update user</button>
+</form>

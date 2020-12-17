@@ -3,7 +3,7 @@ const app = require("../app");
 const router = express.Router();
 const upload = require("../config/cloudinary");
 const CocktailModel = require("../models/Cocktails");
- const Users = require("../models/User");
+const Users = require("../models/User");
 
 // console.log(CocktailModel);
 
@@ -56,7 +56,10 @@ router.get("/one-cocktail/:id", async (req, res, next) => {
   try {
     console.log(req.params);
     const oneCocktail = await CocktailModel.findById(req.params.id);
-    res.render("../views/bar/one_cocktail.hbs", { oneCocktail });
+    res.render("bar/one_cocktail.hbs", {
+      oneCocktail,
+      css: "oneCocktail",
+    });
   } catch (error) {
     next(error);
   }
