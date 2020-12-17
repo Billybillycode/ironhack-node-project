@@ -1,50 +1,41 @@
 <h2>All Cocktails</h2>
 
+{{#each allCocktails}}
+
 <section class="cocktails-display">
     <div class="info-cocktail">
-        {{#each allCocktails}}
         {{!-- <div> <img src="{{this.image}}" alt="cocktail-pic"> </div> --}}
-        <div class="fx-image-gal">
-            <div class="fx-gal-item">
-                <div class="fx-gal-image-thumb" tabindex="1"> <img src="{{this.image}}" alt="cocktail-pic"> </div> 
-            </div>
+        <div class="fx-gal-image-thumb" tabindex="1">
+            <img src="{{this.image}}" alt="cocktail-pic">
         </div>
-
-
-        {{!-- <div class="cocktail-container"> --}}
-        <h3 class="cocktail-name"> {{this.name}} </h3>
-        <div> {{this.funFact}} </div>
-        <a href="/one-cocktail/{{this._id}}">See details</a>
-        <form action="/cocktail-edit/{{this._id}}" method="get">
-            <button>Update</button>
-        </form>
-        <form action="/delete/{{this._id}}" method="post">
-            <button>Delete</button>
-        </form>
-        {{/each}}
+        <div>
+            <h3 class="cocktail-name"> {{this.name}} </h3>
+            <p>{{this.funFact}} </p>
+            <a href="/one-cocktail/{{this._id}}">See details</a>
+            <form action="/cocktail-edit/{{this._id}}" method="get">
+                <button>Update</button>
+            </form>
+            <form action="/delete/{{this._id}}" method="post">
+                <button>Delete</button>
+            </form>
         </div>
     </div>
-      <div><select name="id_tags" id="tags" class="select">
-    <option value="-1" disabled selected>Choose a category</option>
-    {{#each tags}}
-    <option value="{{this._id}}">{{this.alcoholBase}}</option>
-    {{/each}}
-
 </section>
-  {{!-- <div>
-     <label>Choose your alcohol level</label>
-     <input list=“level”>
-       <option value="">Choose Alcohol Base</option>
-          <option value="vodka" />
-      <option value="whisky" />
-      <option value="gin" />
-      <option value="rhum" />
-      <option value="tequila" />
-      <option value="cognac" />
-      <option value="cachaça" />
-      <option value="bourbon" />
-      <option value="armagnac" />
-      <option value="absinthe"/>
-      <option value="virgin" /> 
-      <option value="other" />
-  </div> --}}
+{{/each}}
+{{!-- <div>
+    <label>Choose your alcohol level</label>
+    <input list=“level”>
+    <option value="">Choose Alcohol Base</option>
+    <option value="vodka" />
+    <option value="whisky" />
+    <option value="gin" />
+    <option value="rhum" />
+    <option value="tequila" />
+    <option value="cognac" />
+    <option value="cachaça" />
+    <option value="bourbon" />
+    <option value="armagnac" />
+    <option value="absinthe" />
+    <option value="virgin" />
+    <option value="other" />
+</div> --}}
