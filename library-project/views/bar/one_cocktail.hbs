@@ -1,12 +1,11 @@
 {{!-- <h1>Display one cocktail</h1> --}}
-<div>{{oneCocktail.name}}</div>
+<div id="one-name">{{oneCocktail.name}}</div>
 <div> <img src="{{oneCocktail.image}}" alt="cocktail-pic"> </div>
 <div>{{oneCocktail.alcoholLevel}}</div>
 <div> {{oneCocktail.ingredients}} </div>
 <div> {{oneCocktail.funFact}} </div>
-<div class="flexed-item">
-    {{!-- <select name="main-category" id="main_category" class="select sneak-select">
-      {{!-- bonus : add different sizes on the model + forms  --}}
+{{!-- <div class="flexed-item">
+    <select name="main-category" id="main_category" class="select sneak-select">
        <option value="">Choose Alcohol Base</option>
           <option value="vodka">vodka</option>
       <option value="whisky">Whisky</option>
