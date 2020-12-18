@@ -1,0 +1,22 @@
+{
+  "name": "ironhack-node-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "cd ./library-project && npm install && cd ..",
+    "start": "cd ./library-project && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Billybillycode/ironhack-node-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Billybillycode/ironhack-node-project/issues"
+  },
+  "homepage": "https://github.com/Billybillycode/ironhack-node-project#readme"
+}
