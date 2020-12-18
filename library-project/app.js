@@ -51,10 +51,11 @@ app.use(
 );
 app.use(flash());
 
+app.use(require("./middlewares/flashMessage"));
+app.use(require("./middlewares/loginStatus"));
+
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
-
-app.use(require("./middlewares/flashMessage"));
 
 const index = require("./routes/index");
 app.use("/", index);
@@ -63,5 +64,10 @@ app.use("/", index);
 
 const authentification = require("./routes/authentification");
 app.use("/auth", authentification);
+
+// app.use(require("./middlewares/adminRoute"));
+
+// app.use(require("./middlewares/userRoute"));
+// app.use(require("./middlewares/loginStatus"));
 
 module.exports = app;

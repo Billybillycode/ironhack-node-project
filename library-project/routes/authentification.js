@@ -74,7 +74,7 @@ router.post("/signup", async (req, res, next) => {
 // ROUTE/BOUTON SIGN OUT à mettre dans e form SIGN OUT pour que le user puisse se sign out
 router.get("/signout", async (req, res, next) => {
   req.session.destroy(function (err) {
-    req.flash("bye", "See you soon!");
+    // req.flash("bye", "See you soon!");
     res.redirect("/auth/signin");
   });
 });

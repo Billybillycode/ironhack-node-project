@@ -18,14 +18,16 @@
   <div class="nav">
     <ul>
       <li><a href="/" class="nav-link">Home</a></li>
-      <li><a href="/bar" class="nav-link"><em>Bar</em></a></li>
       <li><a href="/about" class="nav-link">About Us</a></li>
-      {{!-- {{#if isLoggedIn}} --}}
+      {{#if isLoggedIn}}
+      <li><a href="/bar" class="nav-link">Bar</a></li>
       <li><a href="/cocktail-add" class="nav-link">New cocktail</a></li>
       <li><a href="/auth/manage" class="nav-link">My bar</a></li>
-      {{!-- {{/if}} --}}
+      {{/if}}
       <li><a href="/auth/signin" class="nav-link">Sign in</a></li>
       <li><a href="/auth/signup" class="nav-link">Sign up</a></li>
+      <li><a href="/auth/signout" class="nav-link">Sign out</a></li>
+
 
 
 
@@ -33,6 +35,21 @@
   </div>
 
   {{{body}}}
+  {{!-- <ul>
+    <li><a href="/" class="nav-link">Home</a></li>
+    <li><a href="/bar" class="nav-link"><em>Bar</em></a></li>
+    <li><a href="/about" class="nav-link">About Us</a></li>
+    {{#if isLoggedIn}}
+    <li><a href="/cocktail-add" class="nav-link">New cocktail</a></li>
+    <li><a href="/auth/manage" class="nav-link">My bar</a></li>
+    {{/if}}
+    <li><a href="/auth/signin" class="nav-link">Sign in</a></li>
+    <li><a href="/auth/signup" class="nav-link">Sign up</a></li>
+    <li><a href="/auth/signout" class="nav-link">Sign out</a></li>
+
+
+
+  </ul> --}}
 
   <script src="/javascripts/script.js"></script>
 </body>
