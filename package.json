@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "cd ./library-project && npm install && cd ..",
+    "preinstall": "echo >>>Installing && cd ./library-project && npm install && cd ..",
     "start": "cd ./library-project && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
