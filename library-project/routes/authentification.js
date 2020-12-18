@@ -35,7 +35,6 @@ router.post("/signin", async (req, res, next) => {
       const userObject = foundUser.toObject();
       delete userObject.password;
       req.session.currentUser = userObject;
-
       req.flash("success", "Successfully logged in...");
       res.redirect("/auth/manage");
     }
@@ -64,7 +63,7 @@ router.post("/signup", async (req, res, next) => {
       newUser.password = hashPassword;
       await UserModel.create(newUser);
       req.flash("success", "Yeah! Welcome to the Bar! Have fun!");
-      res.redirect("/auth/manage");
+      res.redirect("/auth/signin");
     }
   } catch (error) {
     next(error);
