@@ -1,16 +1,17 @@
-<h1>My bar</h1>
-<div> <img src="{{oneUser.profilPic}}" alt="user-pic"> </div>
-<div>{{oneUser.userName}}</div>
+<div id="account-container">
+    <h1>My bar</h1>
+    <div class="pic-container"> <img class="profile-pic" src="{{oneUser.profilPic}}" alt="user-pic"> </div>
+    <div class="username">
+        <p class="userText">{{oneUser.userName}}</p>
+    </div>
 
 
 
-<form action="/auth/user-edit" method="get">
-    <button>Update</button>
-</form>
+    <form action="/auth/user-edit" method="get">
+        <button>Update info</button>
+    </form>
 
-<form action="/auth/" method="post">
-    <button>Delete</button>
-</form>
+</div>
 
 
 {{!-- {{#each allCocktails}}

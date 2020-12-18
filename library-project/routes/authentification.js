@@ -87,6 +87,7 @@ router.get("/manage", async (req, res, next) => {
     console.log(oneUser);
     res.render("../views/bar/bar_manage.hbs", {
       oneUser,
+      css: "userAccount",
     });
   } catch (error) {
     next(error);

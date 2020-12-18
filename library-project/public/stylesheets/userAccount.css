@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#account-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 5% auto;
+  position: relative;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 10px 5px 5px black;
+}
+
+.profile-pic {
+  width: 250px;
+  height: 200px;
+}
+
+.btn-submit {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: black;
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+h1 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+form {
+  margin-bottom: 10px;
+}
+
+.username {
+  padding: 10px;
+  font-weight: bold;
+}
